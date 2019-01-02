@@ -1,37 +1,40 @@
 package com.Board.BoardController;
 
 import com.Board.BoardModel.BoardModel;
-import com.Board.BoardModel.DotModel;
 import com.Board.BoardView.BoardView;
-import com.Board.BoardView.DotView;
+import com.Main.EventReceiver;
 
 public class BoardController {
 
-    private EventReceiver eventReceiver = new EventReceiver(this);
+    private EventReceiver eventReceiver;
     private BoardModel boardModel = new BoardModel();
-    private BoardView boardView = new BoardView(boardModel.getBoard());
+    private BoardView boardView = new BoardView();
+    private GameLoop gameLoop = new GameLoop(this);
 
-    public BoardController() {
-        createBoard();
+    public BoardController(EventReceiver eventReceiver) {
+        this.eventReceiver = eventReceiver;
+        boardModel.createBoardModel();
+        boardView.createBoardView(this.eventReceiver);
+        gameLoop.loop();
     }
 
-    private void createBoard(){
-        for (int i = 0; i < BoardModel.heigth ; i++) {
-            for (int j = 0; j < BoardModel.width; j++) {
-                boardModel.getBoard()[i][j] = new DotModel();
-                DotView dotView = new DotView(this.eventReceiver, i, j);
-                boardView.getDotViewArray()[i][j] = dotView;
-                dotView.getDotRepresentation().setOnMouseClicked(dotView.clickedOnDot);
-                boardView.getGridPane().add(dotView.getDotRepresentation(), j, i); //nie pameitam???
-            }
-        }
-
+    public GameLoop getGameLoop() {
+        return gameLoop;
     }
 
-    public void createGlider(int i, int j){
+    public void newGeneration(){
+        boardModel.newGeneration();
+        boardView.updateBoardView(boardModel.getBoard());
+    }
+
+    public void createDot(int i, int j) {
+        boardModel.createDot(i, j);
+        boardView.updateBoardView(boardModel.getBoard());
+    }
+
+    public void createGlider(int i, int j) {
         boardModel.createGlider(i, j);
-        boardView.createGlider(i, j);
+        boardView.updateBoardView(boardModel.getBoard());
     }
-
 
 }

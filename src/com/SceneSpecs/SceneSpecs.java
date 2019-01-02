@@ -1,10 +1,10 @@
 package com.SceneSpecs;
 
+import javafx.scene.paint.Color;
+
 public class SceneSpecs {
 
-    public static int heigth = 700;
-    public static int width = 900;
+    public static int heigth = 540;
+    public static int width = 870;
 
-    public SceneSpecs() {
-    }
 }
