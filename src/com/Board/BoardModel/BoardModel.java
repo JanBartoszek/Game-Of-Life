@@ -7,13 +7,17 @@ public class BoardModel {
     private DotModel[][] board = new DotModel[heigth][width];
 
     public BoardModel() {
+        createBoardModel();
+    }
 
+    public DotModel[][] getBoard() {
+        return board;
     }
 
     public void createBoardModel() {
         for (int i = 0; i < BoardModel.heigth; i++) {
             for (int j = 0; j < BoardModel.width; j++) {
-                getBoard()[i][j] = new DotModel();
+                board[i][j] = new DotModel();
             }
         }
     }
@@ -32,11 +36,11 @@ public class BoardModel {
                 if (actualDot.isAlive() && (actualDot.getNeighbours() == 2 || actualDot.getNeighbours() == 3)) {
                     continue;
 
-                //new dot is born
-                } else if (board[i][j].isAlive() == false && actualDot.getNeighbours() == 3) {
+                    //new dot is born
+                } else if (!board[i][j].isAlive() && actualDot.getNeighbours() == 3) {
                     board[i][j].setAlive(true);
 
-                //dot dies due to overpopulation, underpopulation or just doesn't born.
+                    //dot dies due to overpopulation, underpopulation or just doesn't born.
                 } else {
                     board[i][j].setAlive(false);
                 }
@@ -67,7 +71,7 @@ public class BoardModel {
 
                     DotModel surroundingDot = board[givenI + i][givenJ + j];
                     if (surroundingDot.isAlive() && surroundingDot != dotInTheMiddle) {
-                        neighbours ++;
+                        neighbours++;
 
                     }
                 }
@@ -90,10 +94,5 @@ public class BoardModel {
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println(e);
         }
-
-    }
-
-    public DotModel[][] getBoard() {
-        return board;
     }
 }

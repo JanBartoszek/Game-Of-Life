@@ -1,7 +1,7 @@
 package com.UI.Button.ButtonView;
 
 import com.Main.EventReceiver;
-import com.UI.Button.ButtonModel.ButtonType;
+import com.UI.Button.ButtonModel.Enums.ButtonType;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -14,7 +14,7 @@ public class ButtonView {
     private ButtonType buttonType;
     private Button button = new Button();
 
-    public ButtonView(EventReceiver eventReceiver, com.UI.Button.ButtonModel.ButtonType buttonType, String insideText) {
+    public ButtonView(EventReceiver eventReceiver, ButtonType buttonType, String insideText) {
         this.eventReceiver = eventReceiver;
         this.buttonType = buttonType;
         button.setOnMouseClicked(clickedOnButton);

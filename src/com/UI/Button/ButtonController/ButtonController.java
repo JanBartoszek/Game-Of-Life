@@ -1,10 +1,10 @@
 package com.UI.Button.ButtonController;
 
 import com.Main.EventReceiver;
-import com.UI.Button.ButtonModel.*;
+import com.UI.Button.ButtonModel.Enums.InputType;
+import com.UI.Button.ButtonModel.Models.*;
 import com.UI.Button.ButtonView.ButtonContainer;
 import com.UI.Button.ButtonView.ButtonView;
-import com.UI.Label.LabelController.LabelController;
 
 public class ButtonController {
 
@@ -24,10 +24,6 @@ public class ButtonController {
         this.eventReceiver = eventReceiver;
         createViews();
         buttonContainer = new ButtonContainer(buttonViewArray);
-    }
-
-    public ButtonContainer getButtonContainer() {
-        return buttonContainer;
     }
 
     private void createViews(){

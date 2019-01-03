@@ -18,21 +18,20 @@ public class DotView {
 
     public DotView(EventReceiver eventReceiver, int y, int x) {
         this.eventReceiver = eventReceiver;
-        styleTheDot();
-        this.dotRepresentation.setFill(dead);
         this.y = y;
         this.x = x;
+        styleTheDot();
     }
 
     public EventHandler<MouseEvent> clickedOnDot = e -> {
         eventReceiver.receiveEventData(this.y, this.x);
     };
 
-    public void setDotAlive(){
+    public void setDotAlive() {
         this.dotRepresentation.setFill(alive);
     }
 
-    public void setDotDead(){
+    public void setDotDead() {
         this.dotRepresentation.setFill(dead);
     }
 
@@ -40,12 +39,10 @@ public class DotView {
         return dotRepresentation;
     }
 
-    private void styleTheDot(){
+    private void styleTheDot() {
         this.dotRepresentation.setHeight(20);
         this.dotRepresentation.setWidth(20);
         this.dotRepresentation.setArcHeight(5);
         this.dotRepresentation.setArcWidth(5);
     }
-
-
 }

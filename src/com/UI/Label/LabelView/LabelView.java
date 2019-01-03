@@ -2,9 +2,6 @@ package com.UI.Label.LabelView;
 
 import javafx.scene.control.Label;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
 public class LabelView{
 
     private Label label = new Label();

@@ -1,7 +1,6 @@
 package com.Board.BoardController;
 
 import javafx.application.Platform;
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.concurrent.Executors;
@@ -20,7 +19,6 @@ public class GameLoop {
     private PropertyChangeSupport support;
 
 
-
     public GameLoop(BoardController boardController) {
         this.boardController = boardController;
         this.support = new PropertyChangeSupport(this);
@@ -34,7 +32,7 @@ public class GameLoop {
         support.addPropertyChangeListener(pcl);
     }
 
-    public void stopThread(){
+    public void stopThread() {
         gameActive = false;
         service.shutdown();
         try {
@@ -44,8 +42,8 @@ public class GameLoop {
         }
     }
 
-    public void resumeThread(){
-        if (!gameActive){
+    public void resumeThread() {
+        if (!gameActive) {
             gameActive = true;
             loop();
         } else {
@@ -53,19 +51,19 @@ public class GameLoop {
         }
     }
 
-    public void speedUp(){
+    public void speedUp() {
         stopThread();
-        if (speed > minSpeed){
-            support.firePropertyChange("speed", String.valueOf(this.speed) , String.valueOf(this.speed - speedInterval));
+        if (speed > minSpeed) {
+            support.firePropertyChange("speed", String.valueOf(this.speed), String.valueOf(this.speed - speedInterval));
             speed -= speedInterval;
         }
         resumeThread();
     }
 
-    public void slowDown(){
+    public void slowDown() {
         stopThread();
-        if (speed < maxSpeed){
-            support.firePropertyChange("speed", String.valueOf(this.speed) , String.valueOf(this.speed + speedInterval));
+        if (speed < maxSpeed) {
+            support.firePropertyChange("speed", String.valueOf(this.speed), String.valueOf(this.speed + speedInterval));
             speed += speedInterval;
         }
         resumeThread();
@@ -73,15 +71,14 @@ public class GameLoop {
 
     public void loop() {
         service = Executors.newScheduledThreadPool(1);
-        service.scheduleAtFixedRate(runTheLoop(), 0, speed, TimeUnit.MILLISECONDS);
+        service.scheduleAtFixedRate(newGeneration(), 0, speed, TimeUnit.MILLISECONDS);
     }
 
-    private Runnable runTheLoop(){
+    private Runnable newGeneration() {
         Runnable runnable = () -> {
             try {
                 Platform.runLater(() -> boardController.newGeneration());
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e);
             }
         };

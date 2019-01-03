@@ -1,4 +1,7 @@
-package com.UI.Button.ButtonModel;
+package com.UI.Button.ButtonModel.Models;
+
+import com.UI.Button.ButtonModel.Enums.ButtonType;
+import com.UI.Button.ButtonModel.Enums.InputType;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

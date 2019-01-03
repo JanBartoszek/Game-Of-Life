@@ -1,4 +1,4 @@
-package com.UI.Button.ButtonModel;
+package com.UI.Button.ButtonModel.Enums;
 
 public enum ButtonType {
     SPEED_UP,

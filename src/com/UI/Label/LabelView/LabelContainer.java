@@ -3,11 +3,7 @@ package com.UI.Label.LabelView;
 import com.Main.Controller;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 
 public class LabelContainer {
 

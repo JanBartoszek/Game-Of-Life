@@ -2,8 +2,8 @@ package com.Main;
 
 import com.Board.BoardController.BoardController;
 import com.UI.Button.ButtonController.ButtonController;
-import com.UI.Button.ButtonModel.ButtonType;
-import com.UI.Button.ButtonModel.InputType;
+import com.UI.Button.ButtonModel.Enums.ButtonType;
+import com.UI.Button.ButtonModel.Enums.InputType;
 
 public class EventReceiver {
 
@@ -15,12 +15,12 @@ public class EventReceiver {
          this.buttonController = buttonController;
      }
 
-    public void receiveEventData(int i, int j){
+    public void receiveEventData(int height, int width){
             if (buttonController.getCurrentInput() == InputType.DOT) {
-                boardController.createDot(i, j);
+                boardController.createDot(height, width);
             }
              else if (buttonController.getCurrentInput() == InputType.GLIDER) {
-                boardController.createGlider(i, j);
+                boardController.createGlider(height, width);
             }
     }
 
